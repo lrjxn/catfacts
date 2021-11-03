@@ -1,12 +1,14 @@
 <template>
-  <div >
-      <div class="columns is-multiline" >
+  <div>
+      <pagination :count="info.pages" :current="current" @paginate="getPage"></pagination>
+      <button class="button is-primary is-rounded" @click="prev" :disabled="!info.prev">Prev</button>
+      <button class="button is-primary is-rounded" @click="next" :disabled="!info.next">Next</button>
+      <div class="columns is-multiline">
           <div class="column is-one-quarter" v-for="result in results" :key="result.id">
             <character-card :character="result">
             </character-card>
           </div>
       </div>
-      <h1 class="is-size-1" v-if="!info.next">There is no more results</h1>
   </div>
 </template>
 
@@ -22,8 +24,6 @@ export default {
             this.info = response.data.info;
             this.results = response.data.results;
         });
-        
-        window.addEventListener('scroll', this.scroll);
     },
     data(){
         return {
@@ -42,14 +42,23 @@ export default {
             axios.get(this.info.next).then(response => {
                 console.log(response.data);
                 this.info = response.data.info;
-                this.results.push(...response.data.results);
+                this.results = response.data.results;
             });
         },
-        scroll(){
-            console.log(window.scrollY + window.innerHeight, document.body.clientHeight);
-            if(window.scrollY + window.innerHeight > document.body.clientHeight - 100 && this.info.next){
-                this.next();
-            }
+        prev(){
+            axios.get(this.info.prev).then(response => {
+                console.log(response.data);
+                this.info = response.data.info;
+                this.results = response.data.results;
+            });
+        },
+        getPage(page){
+            this.current=page;
+            axios.get('https://rickandmortyapi.com/api/character?page=' + page).then(response => {
+                console.log(response.data);
+                this.info = response.data.info;
+                this.results = response.data.results;
+            });
         }
     }
 }
