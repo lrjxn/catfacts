@@ -18,20 +18,12 @@
                             <td>{{country.TotalDeaths}}</td>
                         </tr>
                         <tr>
-                            <th>Total Recovered:</th>
-                            <td>{{country.TotalRecovered}}</td>
-                        </tr>
-                        <tr>
-                          <th>New Confirmed:</th>
-                          <td>{{country.NewConfirmed}}</td>
+                            <th>New Confirmed:</th>
+                            <td>{{country.NewConfirmed}}</td>
                         </tr>
                         <tr>
                             <th>New Deaths:</th>
                             <td>{{country.NewDeaths}}</td>
-                        </tr>
-                        <tr>
-                            <th>New Recovered:</th>
-                            <td>{{country.NewRecovered}}</td>
                         </tr>
                   </tbody>
               </table>
