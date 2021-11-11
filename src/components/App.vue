@@ -6,7 +6,7 @@
       :key="index"
       :class="{'is-active': index === active}"
       @click="active = index">
-        <a class="has-text-light">{{item.title}}</a>
+        <router-link :to="item.path" class="has-text-light">{{item.title}}</router-link>
       </li>
     </ul>
   </div>
@@ -17,35 +17,23 @@
 </template>
 
 <script>
-import ApiExample from './ApiExample.vue'
-import ClickerExample from './ClickerExample.vue'
-import CovidDataExample from './CovidDataExample.vue'
-import InfiniteScrollExample from './InfiniteScrollExample.vue'
-import ModalExample from './ModalExample.vue'
-import RickAndMortyExample from './RickAndMortyExample.vue'
-import ToDoExample from './ToDoExample.vue'
 
 export default {
-  components: { 
-    ModalExample,
-    ToDoExample,
-    ClickerExample,
-    ApiExample,
-    RickAndMortyExample,
-    InfiniteScrollExample,
-    CovidDataExample
+    created(){
+      this.active = this.items.findIndex(item => item.path == this.$route.path);
     },
     data(){
       return {
         active: 0,
         items: [
-          {title:'Covid Data Example', componentName:'CovidDataExample'},
-          {title:'Infinite scroll Example', componentName:'InfiniteScrollExample'},
-          {title:'Rick and Morty Example', componentName:'RickAndMortyExample'},
-          {title:'Api Example', componentName:'ApiExample'},
-          {title:'Clicker Example', componentName:'ClickerExample'},
-          {title:'Modal Example', componentName:'ModalExample'},
-          {title:'ToDo Example', componentName:'ToDoExample'},
+          {title:'Covid Data', path:'/'},
+          {title:'Infinite scroll', path:'/scroll'},
+          {title:'Rick and Morty', path:'/rickandmorty'},
+          {title:'Api', path:'/api'},
+          {title:'Clicker', path:'/clicker'},
+          {title:'Modal', path:'/modal'},
+          {title:'ToDo', path:'/todo'},
+          {title:'Chart', path:'/chart'},
         ]
       }
     }

@@ -2,7 +2,7 @@
   <div class="card">
       <header class="card-header has-background-primary">
           <p class="card-header-title">
-              {{country.Country}}
+              <router-link :to="'/covid/' + country.Slug" >{{country.Country}}</router-link>
           </p>
       </header>
       <div class="card-content has-background-grey">
