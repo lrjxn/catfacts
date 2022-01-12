@@ -1,19 +1,20 @@
 <template>
-  <h1 class="is-size-1">{{ joke }}</h1>
+  <h1 class="is-size-1">{{ fact }}</h1>
 </template>
 
 <script>
 const axios = require('axios');
 export default {
     created(){
-        axios.get('https://api.chucknorris.io/jokes/random').then(response => {
+        axios.get('https://cat-fact.herokuapp.com/facts/random?animal_type=cat')
+        .then(response => { 
             console.log(response.data);
-            this.joke = response.data.value;
+            this.fact = response.data.text;
         });
     },
     data(){
         return {
-            joke: ''
+            fact: ''
         }
     }
 }

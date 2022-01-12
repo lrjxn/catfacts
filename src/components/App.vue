@@ -26,15 +26,9 @@ export default {
       return {
         active: 0,
         items: [
-          {title:'Covid Data', path:'/'},
-          {title:'Infinite scroll', path:'/scroll'},
-          {title:'Rick and Morty', path:'/rickandmorty'},
+
           {title:'Api', path:'/api'},
-          {title:'Clicker', path:'/clicker'},
-          {title:'Modal', path:'/modal'},
-          {title:'ToDo', path:'/todo'},
-          {title:'Chart', path:'/chart'},
-          {title:'Map', path:'/map'},
+          
         ]
       }
     }
